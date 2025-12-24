@@ -28,7 +28,6 @@ const itemVariants = {
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 md:px-10 overflow-hidden bg-[#050a05] max-md:py-24 ">
-     
       <div className="absolute inset-0 bg-black/40 z-0" />
 
       {/* Glowing Orbs/Mesh linear Effect */}
@@ -36,10 +35,16 @@ export default function Hero() {
       <div className="absolute bottom-[-10%] right-[-20%] w-[600px] h-[600px] rounded-full bg-emerald-500/10 blur-[150px] mix-blend-screen" />
 
       {/* Subtle texture overlay (optional noise) */}
-      <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay z-[1] pointer-events-none"></div>
+      {/* <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay z-[1] pointer-events-none"></div> */}
+      <div
+        className="absolute inset-0 z-1 pointer-events-none opacity-20 mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      ></div>
 
       {/* ==================== CONTENT WRAPPER ==================== */}
-      <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-12 gap-10 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-12 gap-10 items-center ">
         {/* LEFT TEXT CONTENT */}
         <motion.div
           className="md:col-span-7 space-y-8 text-center md:text-left"
@@ -139,10 +144,10 @@ export default function Hero() {
             {/* Image Container with Glass border */}
             <div className="relative z-20 w-full h-full rounded-full overflow-hidden border-[6px] border-white/10 backdrop-blur-sm shadow-2xl shadow-green-900/30">
               <Image
-                src="/about.jpg" // Ensure this path is correct in your public folder
+                src="/about.jpg" 
                 alt="Rakib Hossain Profile"
-                fill
-                priority
+               fill
+                
                 className="object-cover scale-105 hover:scale-110 transition-transform duration-500"
               />
             </div>
