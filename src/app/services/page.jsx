@@ -1,8 +1,10 @@
-import ServicesPage from "@/components/Services/services";
-import React from "react";
+import ServicesClient from "@/components/Services/services";
 
-function page() {
-  return <ServicesPage />;
+export const metadata = {
+  title: "Services | Rakib Hossain",
+  description: "Professional Web Development services offered by Rakib Hossain including Frontend, Backend, and Full Stack solutions.",
+};
+
+export default function ServicesPage() {
+  return <ServicesClient />;
 }
-
-export default page;
