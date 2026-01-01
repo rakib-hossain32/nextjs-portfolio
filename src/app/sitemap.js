@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = 'https://rakibhossain.com'; // Update with actual domain
+  const baseUrl = 'https://rakib-hossain-portfolio-website-32.vercel.app/'; 
   
   return [
     {

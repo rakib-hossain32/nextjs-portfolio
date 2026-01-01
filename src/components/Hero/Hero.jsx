@@ -146,8 +146,9 @@ export default function Hero() {
               <Image
                 src="/about.jpg" 
                 alt="Rakib Hossain Profile"
-               fill
-                
+                fill
+                priority
+                sizes="(max-width: 768px) 320px, 450px"
                 className="object-cover scale-105 hover:scale-110 transition-transform duration-500"
               />
             </div>
@@ -155,23 +156,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Custom Tailwind styles for specific animations if needed in global.css, 
-          but standard tailwind utilities used here. 
-          Ensure you have 'animate-pulse' in tailwind config or use custom CSS below */}
-      <style jsx global>{`
-        .animate-pulse-slow {
-          animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse {
-          0%,
-          100% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0.7;
-          }
-        }
-      `}</style>
     </section>
   );
 }

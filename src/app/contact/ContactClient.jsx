@@ -120,12 +120,14 @@ import { useState } from "react";
             <div className="flex gap-4">
               <a
                 href="https://github.com/rakib-hossain32"
+                aria-label="GitHub Profile"
                 className="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-400 hover:text-white hover:bg-green-600 hover:border-green-600 hover:scale-110 transition-all duration-300"
               >
                 <Github size={20} />
               </a>
               <a
                 href="https://www.facebook.com/rakibmahmud32"
+                aria-label="Facebook Profile"
                 className="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-400 hover:text-white hover:bg-green-600 hover:border-green-600 hover:scale-110 transition-all duration-300"
               >
                 <Facebook size={20} />
@@ -133,6 +135,7 @@ import { useState } from "react";
               <a
                 href="https://www.linkedin.com/in/rakib-hossain-md/"
                 target="_blank"
+                aria-label="LinkedIn Profile"
                 className="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-400 hover:text-white hover:bg-green-600 hover:border-green-600 hover:scale-110 transition-all duration-300"
               >
                 <Linkedin size={20} />
