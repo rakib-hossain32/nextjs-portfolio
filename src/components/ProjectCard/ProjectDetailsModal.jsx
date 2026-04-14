@@ -18,8 +18,9 @@ export default function ProjectDetailsModal({ isOpen, onClose, project }) {
     // Carousel State
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    // Safeguard for images
-    const images = project?.images && project.images.length > 0 ? project.images : [project?.img];
+    // Safeguard for images: Combine main img and gallery images, then remove duplicates
+    const allGalleryImages = [project?.img, ...(project?.images || [])].filter(Boolean);
+    const images = Array.from(new Set(allGalleryImages));
 
     const nextImage = () => {
         setCurrentImageIndex((prev) => (prev + 1) % images.length);
