@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-  import { sendEmail } from "../actions";
+  import { sendEmail } from "@/app/actions";
 import Link from "next/link";
 
   export default function Contact() {

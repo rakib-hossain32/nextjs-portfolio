@@ -1,12 +1,13 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Github, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, Github, ExternalLink, ChevronLeft, ChevronRight, Eye } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
 import { createPortal } from "react-dom";
+import { incrementViewAction } from "@/app/projectActions";
 
 export default function ProjectDetailsModal({ isOpen, onClose, project }) {
     // If not open, don't render anything (handled by AnimatePresence in parent usually, but good safeguard)
@@ -30,14 +31,21 @@ export default function ProjectDetailsModal({ isOpen, onClose, project }) {
 
     // Lock body scroll when modal is open
     useEffect(() => {
-        setMounted(true);
-        if (isOpen) {
-            document.body.style.overflow = "hidden";
-            document.documentElement.style.overflow = "hidden"; // Also lock html for some browsers/smooth scroll
-        } else {
-            document.body.style.overflow = "unset";
-            document.documentElement.style.overflow = "unset";
-        }
+        const initModal = async () => {
+            setMounted(true);
+            if (isOpen) {
+                document.body.style.overflow = "hidden";
+                document.documentElement.style.overflow = "hidden";
+                // Trigger view increment
+                if (project?.id) {
+                  incrementViewAction(project.id);
+                }
+            } else {
+                document.body.style.overflow = "unset";
+                document.documentElement.style.overflow = "unset";
+            }
+        };
+        initModal();
         return () => {
             document.body.style.overflow = "unset";
             document.documentElement.style.overflow = "unset";
@@ -78,7 +86,7 @@ export default function ProjectDetailsModal({ isOpen, onClose, project }) {
                 </button>
 
                 {/* Left Side: Image Carousel */}
-                <div className="w-full md:w-3/5 relative bg-[#000000] min-h-[300px] md:h-auto flex items-center justify-center overflow-hidden group">
+                <div className="w-full md:w-3/5 relative bg-[#000000] h-64 sm:h-80 md:h-auto flex items-center justify-center overflow-hidden group shrink-0">
 
                     {/* Main Image Display with Drag */}
                     <div className="relative w-full h-full flex items-center justify-center">
@@ -113,18 +121,18 @@ export default function ProjectDetailsModal({ isOpen, onClose, project }) {
                         </AnimatePresence>
 
                         {/* Navigation Overlay */}
-                        <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="absolute inset-0 flex items-center justify-between p-2 md:p-4 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
                             <button
                                 onClick={(e) => { e.stopPropagation(); prevImage(); }}
-                                className="p-2 rounded-full bg-black/50 hover:bg-black/70 text-white backdrop-blur-md transition-all hover:scale-110 cursor-pointer"
+                                className="p-1.5 md:p-2 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-md transition-all hover:scale-110 cursor-pointer border border-white/5"
                             >
-                                <ChevronLeft size={24} />
+                                <ChevronLeft size={20} className="md:w-6 md:h-6" />
                             </button>
                             <button
                                 onClick={(e) => { e.stopPropagation(); nextImage(); }}
-                                className="p-2 rounded-full bg-black/50 hover:bg-black/70 text-white backdrop-blur-md transition-all hover:scale-110 cursor-pointer"
+                                className="p-1.5 md:p-2 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-md transition-all hover:scale-110 cursor-pointer border border-white/5"
                             >
-                                <ChevronRight size={24} />
+                                <ChevronRight size={20} className="md:w-6 md:h-6" />
                             </button>
                         </div>
 
@@ -134,15 +142,32 @@ export default function ProjectDetailsModal({ isOpen, onClose, project }) {
                                 <button
                                     key={idx}
                                     onClick={() => setCurrentImageIndex(idx)}
-                                    className={`w-2 h-2 rounded-full transition-all cursor-pointer ${idx === currentImageIndex ? "bg-white w-6" : "bg-white/40 hover:bg-white/60"}`}
+                                    className={`w-1.5 h-1.5 rounded-full transition-all cursor-pointer ${idx === currentImageIndex ? "bg-white w-4" : "bg-white/40 hover:bg-white/60"}`}
                                 />
                             ))}
                         </div>
                     </div>
+
+                    {/* Thumbnail Strip (Desktop only or scrollable) */}
+                    {images.length > 1 && (
+                      <div className="absolute bottom-10 left-0 right-0 px-10 flex justify-center gap-2 overflow-x-auto py-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                        {images.map((img, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => setCurrentImageIndex(idx)}
+                            className={`relative w-14 h-10 rounded-lg overflow-hidden border-2 transition-all pointer-events-auto shadow-lg shrink-0 ${
+                              idx === currentImageIndex ? "border-green-500 scale-110" : "border-white/10 hover:border-white/40"
+                            }`}
+                          >
+                            <Image src={img} alt="thumb" fill className="object-cover" />
+                          </button>
+                        ))}
+                      </div>
+                    )}
                 </div>
 
                 {/* Right Side: Details */}
-                <div className="w-full md:w-2/5 p-6 md:p-8 flex flex-col bg-[#0a0a0a] h-full overflow-y-auto custom-scrollbar">
+                <div className="w-full md:w-2/5 p-6 md:p-8 flex flex-col bg-[#0a0a0a] md:h-full overflow-y-auto custom-scrollbar flex-1">
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-4">

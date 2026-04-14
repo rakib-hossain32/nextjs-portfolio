@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 
-export default function ProjectCard({ title, desc, img, live, git, tag, openModal }) {
+export default function ProjectCard({ title, desc, img, live, git, tag, views = 0, openModal }) {
     const cardRef = useRef(null);
 
     // Mouse Motion Values
@@ -86,7 +86,7 @@ export default function ProjectCard({ title, desc, img, live, git, tag, openModa
             />
 
             {/* 3. Subtle Inner linear */}
-            <div className="absolute inset-0 bg-linear-to-b from-white/[0.03] to-transparent pointer-events-none z-[1]" />
+            <div className="absolute inset-0 bg-linear-to-b from-white/3 to-transparent pointer-events-none z-1" />
 
 
             {/* ==================== IMAGE SECTION ==================== */}
@@ -136,27 +136,35 @@ export default function ProjectCard({ title, desc, img, live, git, tag, openModa
                 {/* Bottom Actions - Push to bottom */}
                 <div className="mt-auto pt-4 border-t border-white/5 flex items-center justify-between gap-4">
 
-                    {/* Github Link - kept for quick access */}
-                    <Link
-                        href={git}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-zinc-500 hover:text-white transition-colors flex items-center gap-2 text-xs font-medium group/link"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <Github size={16} />
-                        <span className="relative">
-                            Code
-                            <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover/link:w-full" />
-                        </span>
-                    </Link>
+                    <div className="flex items-center gap-4">
+                        {/* Github Link */}
+                        <Link
+                            href={git}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-zinc-500 hover:text-white transition-colors flex items-center gap-2 text-xs font-medium group/link"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <Github size={16} />
+                            <span className="relative">
+                                Code
+                                <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover/link:w-full" />
+                            </span>
+                        </Link>
+
+                        {/* View Count */}
+                        <div className="flex items-center gap-1.5 text-[11px] font-medium text-zinc-500">
+                            <Eye size={13} className="text-zinc-600" />
+                            <span>{views > 999 ? `${(views / 1000).toFixed(1)}k` : views} views</span>
+                        </div>
+                    </div>
 
                     {/* View Details Button (Triggers Modal) */}
                     <button
                         onClick={openModal}
                         className="relative px-5 py-2 rounded-lg bg-white/5 hover:bg-green-500/10 border border-white/10 hover:border-green-500/50 text-white hover:text-green-400 transition-all duration-300 overflow-hidden group/btn flex items-center gap-2 cursor-pointer"
                     >
-                        <div className="absolute inset-0 translate-y-[100%] bg-linear-to-t from-green-500/20 to-transparent transition-transform duration-300 group-hover/btn:translate-y-0" />
+                        <div className="absolute inset-0 translate-y-full bg-linear-to-t from-green-500/20 to-transparent transition-transform duration-300 group-hover/btn:translate-y-0" />
                         <span className="relative flex items-center gap-2 text-xs font-bold tracking-wide uppercase">
                             Details <Eye size={14} className="fill-current" />
                         </span>
