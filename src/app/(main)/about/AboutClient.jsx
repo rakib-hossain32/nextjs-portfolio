@@ -8,7 +8,7 @@ export default function About() {
   // Skills with categories for a cleaner look
   const skills = [
     "React.js", "Next.js", "Node.js", "Express.js", 
-    "MongoDB", "Tailwind CSS", "Framer Motion", "Firebase"
+    "MongoDB", "Tailwind CSS", "Firebase"
   ];
 
  const stats = [

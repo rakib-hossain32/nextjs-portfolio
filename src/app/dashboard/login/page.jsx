@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Lock, Eye, EyeOff, Loader2, ShieldCheck, AlertCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { loginAction } from "../actions";
-import { setAuth } from "@/lib/projectsStore";
+import { setAuth } from "@/lib/auth";
 
 export default function DashboardLoginPage() {
   const router = useRouter();
@@ -39,8 +39,8 @@ export default function DashboardLoginPage() {
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(74,222,128,0.5) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(74,222,128,0.5) 1px, transparent 1px)
+            linear-linear(rgba(74,222,128,0.5) 1px, transparent 1px),
+            linear-linear(90deg, rgba(74,222,128,0.5) 1px, transparent 1px)
           `,
           backgroundSize: "60px 60px",
         }}
@@ -60,7 +60,7 @@ export default function DashboardLoginPage() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-cyan-600 flex items-center justify-center mb-4 shadow-lg shadow-green-900/50"
+              className="w-16 h-16 rounded-2xl bg-linear-to-br from-green-500 to-cyan-600 flex items-center justify-center mb-4 shadow-lg shadow-green-900/50"
             >
               <ShieldCheck size={32} className="text-white" />
             </motion.div>
@@ -114,7 +114,7 @@ export default function DashboardLoginPage() {
               type="submit"
               disabled={loading || !password.trim()}
               whileTap={{ scale: 0.98 }}
-              className="w-full py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-500 hover:to-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-900/30"
+              className="w-full py-3.5 rounded-xl font-semibold text-white bg-linear-to-r from-green-600 to-emerald-700 hover:from-green-500 hover:to-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-900/30"
             >
               {loading ? (
                 <>

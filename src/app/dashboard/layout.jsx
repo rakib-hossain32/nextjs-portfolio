@@ -11,12 +11,14 @@ import {
   X,
   ExternalLink,
   ChevronRight,
+  MessageSquareQuote,
 } from "lucide-react";
-import { isAuthenticated, clearAuth } from "@/lib/projectsStore";
+import { isAuthenticated, clearAuth } from "@/lib/auth";
 
 const navItems = [
   { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
   { href: "/dashboard/projects", label: "Projects", icon: FolderKanban },
+  { href: "/dashboard/testimonials", label: "Testimonials", icon: MessageSquareQuote },
 ];
 
 // ─── Sidebar component defined OUTSIDE DashboardLayout ────────────────────────
