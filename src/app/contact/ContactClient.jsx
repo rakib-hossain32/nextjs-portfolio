@@ -15,6 +15,7 @@ import {
 import { useState } from "react";
 
   import { sendEmail } from "../actions";
+import Link from "next/link";
 
   export default function Contact() {
   const [formState, setFormState] = useState("idle"); // idle, submitting, success, error
@@ -91,7 +92,7 @@ import { useState } from "react";
           {/* Info Cards */}
           <div className="space-y-5">
             {contactInfo.map((item, i) => (
-              <a key={i} href={item.link} className="">
+              <Link key={i} href={item.link} className="">
                 <div className="sm:flex  max-sm:space-y-2 w-full  items-center sm:gap-5 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 hover:border-green-500/30 transition-all duration-300 group">
                   <div className="w-12 h-12 flex items-center justify-center rounded-full bg-linear-to-br from-green-500/20 to-cyan-500/20 text-green-400 group-hover:scale-110 transition-transform">
                     {item.icon}
@@ -108,7 +109,7 @@ import { useState } from "react";
                 <div className="ml-auto opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-green-400">
                   <ArrowUpRight />
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -118,28 +119,28 @@ import { useState } from "react";
               Connect with me on social media
             </p>
             <div className="flex gap-4">
-              <a
+              <Link
                 href="https://github.com/rakib-hossain32"
                 aria-label="GitHub Profile"
                 className="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-400 hover:text-white hover:bg-green-600 hover:border-green-600 hover:scale-110 transition-all duration-300"
               >
                 <Github size={20} />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://www.facebook.com/rakibmahmud32"
                 aria-label="Facebook Profile"
                 className="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-400 hover:text-white hover:bg-green-600 hover:border-green-600 hover:scale-110 transition-all duration-300"
               >
                 <Facebook size={20} />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://www.linkedin.com/in/rakib-hossain-md/"
                 target="_blank"
                 aria-label="LinkedIn Profile"
                 className="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-400 hover:text-white hover:bg-green-600 hover:border-green-600 hover:scale-110 transition-all duration-300"
               >
                 <Linkedin size={20} />
-              </a>
+              </Link>
             </div>
           </div>
         </motion.div>

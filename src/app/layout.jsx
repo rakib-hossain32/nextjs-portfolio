@@ -2,6 +2,9 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
 import "./globals.css";
 import Footer from "@/components/Footer/Footer";
+import SmoothScroll from "@/components/SmoothScroll/SmoothScroll";
+
+import Preloader from "@/components/Preloader/Preloader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -51,11 +54,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} bg-black text-white antialiased`}>
-        <Navbar/>
-        <main className="min-h-screen flex flex-col">
-           {children}
-        </main>
-        <Footer/>
+        <Preloader />
+        <SmoothScroll>
+          <Navbar />
+          <main className="min-h-screen flex flex-col">
+            {children}
+          </main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

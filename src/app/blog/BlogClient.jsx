@@ -197,7 +197,7 @@ export default function BlogPage() {
                       className="text-green-400 group-hover/link:translate-x-1 transition-transform"
                     />
                   </Link> */}
-                  <a
+                  <Link
                     href={article.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -208,7 +208,7 @@ export default function BlogPage() {
                       size={16}
                       className="text-green-400 group-hover/link:translate-x-1 transition-transform"
                     />
-                  </a>
+                  </Link>
                 </div>
               </motion.article>
             ))}

@@ -141,7 +141,7 @@ export default function Navbar() {
             {/* CTA Button */}
             <Link href="/contact" className="hidden md:block">
               <button
-                className={`group relative px-6 py-2.5 rounded-full text-sm font-semibold transition-all overflow-hidden bg-linear-to-r from-green-500 to-cyan-500 text-[#050a05]`}
+                className={`group relative px-6 py-2.5 rounded-full text-sm font-semibold transition-all overflow-hidden bg-linear-to-r from-green-500 to-cyan-500 text-[#050a05] cursor-pointer`}
               >
                 <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
                 <span className="flex items-center gap-1">
@@ -225,30 +225,30 @@ export default function Navbar() {
               </Link>
 
               <div className="flex gap-6">
-                <a
+                <Link
                   target="_blank"
                   href="https://github.com/rakib-hossain32"
                   aria-label="GitHub Profile"
                   className="text-gray-400 hover:text-green-400"
                 >
                   <Github size={24} />
-                </a>
-                <a
+                </Link>
+                <Link
                   target="_blank"
                   href="https://www.facebook.com/rakibmahmud32"
                   aria-label="Facebook Profile"
                   className="text-gray-400 hover:text-cyan-400"
                 >
                   <Facebook size={24} />
-                </a>
-                <a
+                </Link>
+                <Link
                   target="_blank"
                   href="https://www.linkedin.com/in/rakib-hossain-md/"
                   aria-label="LinkedIn Profile"
                   className="text-gray-400 hover:text-white"
                 >
                   <Linkedin size={24} />
-                </a>
+                </Link>
               </div>
             </motion.div>
           </motion.div>

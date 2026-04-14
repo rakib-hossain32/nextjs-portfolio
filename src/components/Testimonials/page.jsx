@@ -1,6 +1,7 @@
 "use client";
 
 import { MessageSquareQuote, Star, User, Building2 } from "lucide-react";
+import Link from "next/link";
 
 export default function TestimonialsPage() {
   const testimonials = [
@@ -126,47 +127,14 @@ export default function TestimonialsPage() {
 
         {/* Bottom CTA */}
         <div className="mt-20 text-center px-6">
-          <a
+          <Link
             href="/contact"
             className="inline-block px-8 py-3 rounded-full bg-white/10 border border-white/10 text-white font-semibold hover:bg-green-500 hover:text-black hover:border-green-500 transition-all hover:scale-105"
           >
             Start a Project
-          </a>
+          </Link>
         </div>
       </div>
-
-      {/* ==================== CSS LOGIC ==================== */}
-      <style jsx global>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-100% - 24px));
-          } /* 24px = gap-6 */
-        }
-        @keyframes marquee-reverse {
-          0% {
-            transform: translateX(calc(-100% - 24px));
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-
-        .animate-marquee {
-          animation: marquee 50s linear infinite;
-        }
-        .animate-marquee-reverse {
-          animation: marquee-reverse 50s linear infinite;
-        }
-
-        /* Hover Pause Logic */
-        .scroller-container:hover .animate-marquee,
-        .scroller-container:hover .animate-marquee-reverse {
-          animation-play-state: paused !important;
-        }
-      `}</style>
     </section>
   );
 }

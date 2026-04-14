@@ -62,13 +62,13 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="flex gap-4">
               {socialLinks.map((social, i) => (
-                <a
+                <Link
                   key={i}
                   href={social.href}
                   className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-gray-400 hover:bg-green-500 hover:text-black hover:border-green-500 hover:scale-110 transition-all duration-300"
                 >
                   {social.icon}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -130,8 +130,8 @@ export default function Footer() {
           </p>
           
           <div className="flex items-center gap-6">
-            <a href="#" className="text-gray-500 hover:text-white text-sm transition-colors">Privacy Policy</a>
-            <a href="#" className="text-gray-500 hover:text-white text-sm transition-colors">Terms of Service</a>
+            <Link href="#" className="text-gray-500 hover:text-white text-sm transition-colors">Privacy Policy</Link>
+            <Link href="#" className="text-gray-500 hover:text-white text-sm transition-colors">Terms of Service</Link>
             
             {/* Back to Top Button */}
             <button 
